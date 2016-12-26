@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+
+
+
+<record id="make_sale_order_action" model="ir.actions.server">
+        <field name="name">Hacer un presupuesto</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="state">code</field>
+        <field name="condition">True</field>
+        <field name="code">action = self.browse(cr,uid,context.get('active_ids', [])).make_sale_order()</field>
+</record>
+<record id="make_sale_order" model="ir.values">
+        <field name="name">make_sale_order</field>
+        <field name="model">product.product</field>
+        <field name="key" >action</field>
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.server,%d'%make_sale_order_action"/>
+</record>
+
+
+
+    </data>
+</openerp>
